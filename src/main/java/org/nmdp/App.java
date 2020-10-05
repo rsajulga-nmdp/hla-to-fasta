@@ -19,23 +19,28 @@ public class App {
 
         while(sc.hasNext()){
             String[] data = sc.nextLine().split(",");
-            StringBuilder sb = new StringBuilder();
-            sb.append(">");
-            sb.append(data[1]);
-            sb.append(DIVIDER);
-            sb.append(data[2]);
-            sb.append(DIVIDER);
-            sb.append(data[3]);
-            sb.append("\n");
-            for(int i = 5; i < data.length; i++){
-                sb.append(data[i]);
+            if (data.length > 3){
+                StringBuilder sb = new StringBuilder();
+                sb.append(">");
+                sb.append(data[1]);
+                sb.append(DIVIDER);
+                sb.append(data[2]);
+                sb.append(DIVIDER);
+                sb.append(data[3]);
+                sb.append("\n");
+                for(int i = 5; i < data.length; i++){
+                    sb.append(data[i]);
+                }
+                if (data[3].indexOf('-') >= 0){
+                    String key = getKey(data[3]);
+                    if (key.length() > 0){
+                        if(!printMap.containsKey(key)){
+                            printMap.put(key, new PrintWriter(fileName + "_"+ key + ".fasta"));
+                        }
+                        printMap.get(key).println(sb.toString());
+                    }
+                }
             }
-            String key = getKey(data[3]);
-            if(!printMap.containsKey(key)){
-                printMap.put(key, new PrintWriter(fileName + "_"+ key + ".fasta"));
-            }
-            printMap.get(key).println(sb.toString());
-
         }
 
         for(PrintWriter pw : printMap.values()){
@@ -48,6 +53,9 @@ public class App {
     private static String getKey(String hla){
 
         String type = hla.split("\\*")[0];
+        if (type.split("-").length < 2){
+            return "";
+        }
         String key = type.split("-")[1];
         return key;
     }
