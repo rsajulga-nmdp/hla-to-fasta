@@ -19,25 +19,34 @@ public class App {
 
         while(sc.hasNext()){
             String[] data = sc.nextLine().split(",");
+//            String folderName = data[0];
+            String projectName = data[1];
+            String sampleID = data[2];
+            String alleleID = data[3];
+            String alleleName = data[4];
+//            String glString = data[5];
+            
             if (data.length > 3){
                 StringBuilder sb = new StringBuilder();
                 sb.append(">");
-                sb.append(data[1]);
+                sb.append(sampleID);
                 sb.append(DIVIDER);
-                sb.append(data[2]);
+                sb.append(projectName);
                 sb.append(DIVIDER);
-                sb.append(data[3]);
+                sb.append(alleleID);
+                sb.append(DIVIDER);
+                sb.append(alleleName);
                 sb.append("\n");
-                for(int i = 5; i < data.length; i++){
+                for(int i = 6; i < data.length; i++){
                     sb.append(data[i]);
                 }
-                if (data[3].indexOf('-') >= 0){
-                    String key = getKey(data[3]);
-                    if (key.length() > 0){
-                        if(!printMap.containsKey(key)){
-                            printMap.put(key, new PrintWriter(fileName + "_"+ key + ".fasta"));
+                if (alleleName.indexOf('-') >= 0){
+                    String locus = getKey(alleleName);
+                    if (locus.length() > 0){
+                        if(!printMap.containsKey(locus)){
+                            printMap.put(locus, new PrintWriter(fileName + "_"+ locus + ".fasta"));
                         }
-                        printMap.get(key).println(sb.toString());
+                        printMap.get(locus).println(sb.toString());
                     }
                 }
             }
