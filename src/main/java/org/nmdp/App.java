@@ -19,10 +19,10 @@ public class App {
         	try {
 	            String[] data = sc.nextLine().split(",");
 	//            String folderName = data[0];
-	            String projectName = data[1];
-	            String sampleID = data[2];
-	            String alleleID = data[3];
-	            String alleleName = data[4];
+	            String projectName = data.length > 1 ? data[1] : "";
+	            String sampleID = data.length > 2 ? data[2] : "";
+	            String alleleID = data.length > 3 ? data[3] : "";
+	            String alleleName = data.length > 4 ? data[4] : "";
 	//            String glString = data[5];
 	            
 	            if (data.length > 3){
