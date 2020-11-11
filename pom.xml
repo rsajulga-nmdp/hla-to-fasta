@@ -184,7 +184,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>org.nmdp.Run</mainClass>
+                            <mainClass>org.nmdp.App</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
