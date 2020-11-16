@@ -21,8 +21,10 @@ public class App {
 	//            String folderName = data[0];
 	            String projectName = data.length > 1 ? data[1] : "";
 	            String sampleID = data.length > 2 ? data[2] : "";
-	            String alleleID = data.length > 3 ? data[3] : "";
-	            String alleleName = data.length > 4 ? data[4] : "";
+	            String typingMethod = data.length > 3 ? data[3] : "";
+	            String typingSource = data.length > 4 ? data[4] : "";
+	            String alleleID = data.length > 5 ? data[5] : "";
+	            String alleleName = data.length > 6 ? data[6] : "";
 	//            String glString = data[5];
 	            
 	            if (data.length > 3){
@@ -32,11 +34,15 @@ public class App {
 	                sb.append(DIVIDER);
 	                sb.append(projectName);
 	                sb.append(DIVIDER);
+	                sb.append(typingMethod);
+	                sb.append(DIVIDER);
+	                sb.append(typingSource);
+	                sb.append(DIVIDER);
 	                sb.append(alleleID);
 	                sb.append(DIVIDER);
 	                sb.append(alleleName);
 	                sb.append("\n");
-	                for(int i = 6; i < data.length; i++){
+	                for(int i = 8; i < data.length; i++){
 	                    sb.append(data[i]);
 	                }
 	                if (alleleName.indexOf('-') >= 0){
