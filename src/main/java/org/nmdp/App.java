@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class App {
     static Map<String, PrintWriter> printMap = new HashMap<>();
-    private static final String DIVIDER = "_";
+    private static final String DIVIDER = "|";
     public static void main(String[] args) throws FileNotFoundException {
         String inputFile = args[0];
         File input = new File(inputFile);
